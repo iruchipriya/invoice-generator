@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Generator — Free Online Invoice Maker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- ============================================================
+       ANALYTICS — Google Analytics 4
+       GA4 is loaded dynamically by js/analytics.js (async, non-blocking).
+       To activate: open js/analytics.js and set ANALYTICS_CFG.measurementId
+       to your real Measurement ID (format: G-XXXXXXXXXX).
+       Get yours at: https://analytics.google.com
+         Admin → Data Streams → your web stream → Measurement ID
+  ============================================================ -->
+
+  <!-- ============================================================
+       GOOGLE ADSENSE SCRIPT
+       STEP 1: Uncomment the line below and replace with your publisher ID.
+       Get it from: https://www.google.com/adsense
+       Format: ca-pub-XXXXXXXXXXXXXXXXX
+  ============================================================ -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+</head>
+<body>
+
+  <!-- ======================================================
+       APP HEADER
+  ====================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="brand-logo-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-name">InvoiceGen</span>
+          <span class="brand-tagline">Professional Invoices, Instantly</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Currency Picker -->
+        <div class="currency-picker" id="currencyPicker">
+          <button type="button" class="currency-picker-btn" id="currencyPickerBtn" aria-haspopup="listbox" aria-label="Select currency">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span id="currencyDisplay">₹ INR</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="currency-dropdown hidden" id="currencyDropdown" role="listbox">
+            <div class="currency-search-wrap">
+              <input type="text" id="currencySearch" class="currency-search"
+                placeholder="Search currency or code…" autocomplete="off" spellcheck="false" />
+            </div>
+            <ul class="currency-list" id="currencyList"></ul>
+            <div class="currency-empty hidden" id="currencyEmpty">No results found</div>
+          </div>
+        </div>
+
+        <!-- Ad Toggle (Premium feature placeholder) -->
+        <button id="adToggleBtn" class="ad-toggle-btn" title="Toggle advertisements" aria-label="Toggle advertisements">
+          <svg id="adToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <span id="adToggleLabel">Hide Ads</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button id="darkModeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <svg id="iconSun" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg id="iconMoon" class="theme-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       AD SLOT A — Top Banner (Leaderboard 728×90 / Responsive)
+       Position: Below header, above main content
+       Why here: High visibility, doesn't interfere with any form input
+       AdSense policy: Not near any action buttons ✓
+  ============================================================ -->
+  <div class="ad-slot ad-slot-top" id="adSlotTop" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-content">
+      <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+           data-ad-client  : your publisher ID  (ca-pub-XXXXXXXXXXXXXXXXX)
+           data-ad-slot    : slot ID from your AdSense dashboard
+      -->
+      <ins class="adsbygoogle ad-ins"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="AAAAAAAAAA"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <!-- Placeholder shown until AdSense loads. Remove once live. -->
+      <div class="ad-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Ad Banner · 728×90</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="app-main">
+
+    <!-- ====================================================
+         FORM PANEL (left — scrollable)
+    ==================================================== -->
+    <section class="form-panel">
+
+      <!-- ── Business Info ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </span>
+          Business Information
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Company Logo</label>
+          <div class="logo-upload-area" id="logoUploadArea">
+            <input type="file" id="logoInput" accept="image/*" class="logo-file-input" />
+            <div id="logoPlaceholder">
+              <svg class="upload-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
+                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+              </svg>
+              <span>Click to upload logo</span>
+              <small>PNG, JPG up to 2 MB</small>
+            </div>
+            <div class="logo-preview-wrap hidden" id="logoPreviewWrap">
+              <img id="logoPreview" src="" alt="Logo" />
+              <button type="button" id="removeLogoBtn" class="remove-logo-btn" title="Remove">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="businessName">Business Name <span class="req">*</span></label>
+          <input type="text" id="businessName" class="form-input" placeholder="Acme Corp Pvt Ltd" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="businessAddress">Business Address <span class="req">*</span></label>
+          <textarea id="businessAddress" class="form-textarea" rows="3"
+            placeholder="123 MG Road, Bengaluru, Karnataka 560001"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="businessEmail">Email</label>
+            <input type="email" id="businessEmail" class="form-input" placeholder="hello@acme.in" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="businessPhone">Phone</label>
+            <input type="tel" id="businessPhone" class="form-input" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="gstNumber">GST Number</label>
+          <input type="text" id="gstNumber" class="form-input" placeholder="22AAAAA0000A1Z5"
+            maxlength="15" style="text-transform:uppercase" />
+        </div>
+      </div>
+
+      <!-- ── Customer Info ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          Customer Information
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="customerName">Customer / Company Name <span class="req">*</span></label>
+          <input type="text" id="customerName" class="form-input" placeholder="Buyer Name or Company" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="customerAddress">Billing Address</label>
+          <textarea id="customerAddress" class="form-textarea" rows="3"
+            placeholder="456 Park Street, Mumbai, Maharashtra 400001"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="customerEmail">Email</label>
+            <input type="email" id="customerEmail" class="form-input" placeholder="buyer@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="customerGST">Customer GST</label>
+            <input type="text" id="customerGST" class="form-input" placeholder="GSTIN (optional)"
+              maxlength="15" style="text-transform:uppercase" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Invoice Details ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-sky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </span>
+          Invoice Details
+        </h2>
+
+        <div class="form-row three-col">
+          <div class="form-group">
+            <label class="form-label" for="invoiceNumber">Invoice # <span class="req">*</span></label>
+            <input type="text" id="invoiceNumber" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="invoiceDate">Invoice Date <span class="req">*</span></label>
+            <input type="date" id="invoiceDate" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dueDate">Due Date</label>
+            <input type="date" id="dueDate" class="form-input" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Line Items ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </span>
+          Line Items
+        </h2>
+
+        <div class="items-header">
+          <span>Description</span>
+          <span>Qty</span>
+          <span>Rate</span>
+          <span>Total</span>
+          <span></span>
+        </div>
+
+        <div id="itemsContainer"></div>
+
+        <button type="button" id="addItemBtn" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Line Item
+        </button>
+      </div>
+
+      <!-- ============================================================
+           AD SLOT B — In-Form Rectangle (300×250 / Responsive)
+           Position: Between Line Items and Charges cards
+           Why here: Natural reading break, away from all action buttons
+           AdSense policy: Not near Download/Clear buttons ✓
+      ============================================================ -->
+      <div class="ad-slot ad-slot-in-form" id="adSlotInForm" role="complementary" aria-label="Advertisement">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-content">
+          <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+               data-ad-client : ca-pub-XXXXXXXXXXXXXXXXX
+               data-ad-slot   : your slot ID for this placement
+          -->
+          <ins class="adsbygoogle ad-ins"
+               style="display:block"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+               data-ad-slot="BBBBBBBBBB"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <!-- Remove placeholder when AdSense is live -->
+          <div class="ad-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>Ad Rectangle · 300×250</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Charges & Discounts ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </span>
+          Charges &amp; Discounts
+        </h2>
+
+        <!-- Dynamic tax rows -->
+        <div class="tax-section">
+          <div class="tax-section-hd">
+            <span class="form-label" style="margin-bottom:0">Tax / GST</span>
+            <button type="button" id="addTaxBtn" class="btn-add-tax">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              Add Tax
+            </button>
+          </div>
+          <div class="tax-rows-head">
+            <span>Name</span><span>Rate (%)</span><span>Amount</span><span></span>
+          </div>
+          <div id="taxRowsContainer"></div>
+        </div>
+
+        <div class="calc-divider"></div>
+
+        <div class="calc-grid">
+          <label class="form-label" for="discount">Discount (<span class="currency-symbol-label">₹</span>)</label>
+          <input type="number" id="discount" class="form-input" min="0" step="1" value="0" />
+
+          <label class="form-label" for="shipping">Shipping / Other (<span class="currency-symbol-label">₹</span>)</label>
+          <input type="number" id="shipping" class="form-input" min="0" step="1" value="0" />
+        </div>
+      </div>
+
+      <!-- ── Notes & Terms ── -->
+      <div class="card">
+        <h2 class="card-title">
+          <span class="card-icon ci-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </span>
+          Notes &amp; Terms
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="notes">Notes</label>
+          <textarea id="notes" class="form-textarea" rows="3"
+            placeholder="Payment instructions, thank you note, etc."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="terms">Terms &amp; Conditions</label>
+          <textarea id="terms" class="form-textarea" rows="3"
+            placeholder="e.g. Payment due within 30 days."></textarea>
+        </div>
+      </div>
+
+      <!-- ── Actions ── NOTE: No ads placed within 150px of these buttons (AdSense policy) ── -->
+      <div class="actions-bar">
+        <button type="button" id="downloadBtn" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download PDF
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ====================================================
+         PREVIEW PANEL (right — fixed height)
+    ==================================================== -->
+    <section class="preview-panel">
+      <div class="preview-sticky">
+        <div class="preview-topbar">
+          <div class="preview-topbar-left">
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span class="preview-label">Live Preview</span>
+          </div>
+          <div class="preview-topbar-actions">
+            <button type="button" id="clearBtn" class="btn-topbar-clear">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                <path d="M10 11v6"/><path d="M14 11v6"/>
+              </svg>
+              Clear
+            </button>
+            <button type="button" id="printBtn" class="btn-print">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+              </svg>
+              Print
+            </button>
+          </div>
+        </div>
+
+        <!-- The invoice preview scrollable area -->
+        <div class="preview-scroll">
+          <div id="invoicePreview" class="invoice-doc"></div>
+        </div>
+
+        <!-- ============================================================
+             AD SLOT C — Below Preview (Leaderboard / Responsive)
+             Position: Below the invoice preview window, above footer
+             Why here: Sidebar-equivalent in a 2-column layout; seen
+                       after reviewing the invoice, zero chance of
+                       accidental clicks on invoice controls ✓
+        ============================================================ -->
+        <div class="ad-slot ad-slot-below-preview" id="adSlotPreview" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-content">
+            <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+                 data-ad-client : ca-pub-XXXXXXXXXXXXXXXXX
+                 data-ad-slot   : your slot ID for this placement
+            -->
+            <ins class="adsbygoogle ad-ins"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+                 data-ad-slot="CCCCCCCCCC"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <!-- Remove placeholder when AdSense is live -->
+            <div class="ad-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <span>Ad Banner · 728×90</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       AD SLOT D — Footer (Leaderboard 728×90 / Responsive)
+       Position: Below all content; visible after scrolling on mobile
+       Why here: Non-intrusive, user has completed their task ✓
+       AdSense policy: Clearly separated from content ✓
+  ============================================================ -->
+  <footer class="app-footer">
+    <div class="ad-slot ad-slot-footer" id="adSlotFooter" role="complementary" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-content">
+        <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+             data-ad-client : ca-pub-XXXXXXXXXXXXXXXXX
+             data-ad-slot   : your slot ID for this placement
+        -->
+        <ins class="adsbygoogle ad-ins"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+             data-ad-slot="DDDDDDDDDD"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <!-- Remove placeholder when AdSense is live -->
+        <div class="ad-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>Ad Footer · 728×90</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 InvoiceGen &mdash; Free Invoice Generator</p>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- ============================================================
+       AD SLOT E — Sticky Bottom Bar
+       Shown in Variant B (Sticky) and Variant C (Combined).
+       Dismissed per browser session (reappears on new tab).
+       AdSense policy: Has clear close button, never covers main CTA ✓
+  ============================================================ -->
+  <div id="adStickyBottom" class="ad-sticky-bottom" role="complementary" aria-label="Advertisement" style="display:none">
+    <button id="stickyCloseBtn" class="sticky-close-btn" title="Dismiss" aria-label="Close advertisement">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <span class="ad-label ad-label-sticky">Advertisement</span>
+    <div class="ad-content">
+      <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+           data-ad-client : ca-pub-XXXXXXXXXXXXXXXXX
+           data-ad-slot   : your slot ID for this placement
+      -->
+      <ins class="adsbygoogle ad-ins"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="EEEEEEEEEE"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <!-- Remove placeholder when AdSense is live -->
+      <div class="ad-placeholder ad-placeholder-sticky">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Sticky Ad · 320×50</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       POST-DOWNLOAD AD PANEL
+       Shown in Variant B and C after the user clicks Download PDF.
+       Auto-closes after 9 seconds. Has a progress bar countdown.
+       AdSense policy: User-initiated, clearly labeled, dismissible ✓
+  ============================================================ -->
+  <div id="adPostDownload" class="ad-post-download hidden" role="dialog" aria-label="Advertisement" aria-modal="false">
+    <div class="pd-header">
+      <span class="ad-label" style="position:static;margin:0">Advertisement</span>
+      <span class="pd-title">Your invoice is downloading!</span>
+      <button class="pd-close-btn" id="pdCloseBtn" title="Close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Progress bar counts down to auto-close -->
+    <div class="pd-progress-track"><div class="pd-progress-bar"></div></div>
+    <div class="ad-content pd-ad-content">
+      <!-- ── REPLACE BELOW WITH YOUR REAL ADSENSE CODE ──
+           data-ad-client : ca-pub-XXXXXXXXXXXXXXXXX
+           data-ad-slot   : your slot ID for this placement
+      -->
+      <ins class="adsbygoogle ad-ins"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="FFFFFFFFFF"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <!-- Remove placeholder when AdSense is live -->
+      <div class="ad-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Post-Download Ad · 300×250</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics (loaded first so script.js can call window.analytics immediately) -->
+  <script src="js/analytics.js"></script>
+  <!-- Invoice logic -->
+  <script src="js/script.js"></script>
+  <!-- Ad management (separate from invoice logic) -->
+  <script src="js/ads.js"></script>
+</body>
+</html>
