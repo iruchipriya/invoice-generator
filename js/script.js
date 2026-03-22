@@ -282,7 +282,7 @@ function addTaxRow(data = {}) {
   taxes[id] = {
     id,
     name: data.name || 'GST',
-    rate: parseFloat(data.rate) ?? 18,
+    rate: data.rate != null ? (parseFloat(data.rate) || 0) : 18,
   };
   const row = createTaxRowElement(id);
   document.getElementById('taxRowsContainer').appendChild(row);
