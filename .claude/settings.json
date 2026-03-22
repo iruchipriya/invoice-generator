@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:invoicegenerator.best)",
+      "Bash(git push:*)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i '' 's|<a href=\"\"/\"\">Free Invoice Maker</a>|<a href=\"\"/\"\">Free Invoice Maker</a>\\\\n      <a href=\"\"/blog.html\"\">Blog</a>\\\\n      <a href=\"\"/about.html\"\">About</a>|g' \"/Users/ruchipriya/Desktop/Code/invoice-generator/$f\")",
+      "Bash(done)"
     ]
   }
 }

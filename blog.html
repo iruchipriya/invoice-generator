@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice & Freelance Blog — Guides, Tips & Templates | InvoiceGen</title>
+  <meta name="description" content="Free invoicing guides, templates, and tips for freelancers and small businesses. Learn how to invoice, understand payment terms, GST, VAT, and more." />
+  <link rel="canonical" href="https://invoicegenerator.best/blog.html" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://invoicegenerator.best/blog.html" />
+  <meta property="og:title"       content="Invoice & Freelance Blog — InvoiceGen" />
+  <meta property="og:description" content="Practical invoicing guides, payment term explanations, and billing best practices for freelancers and small businesses worldwide." />
+  <meta property="og:site_name"   content="InvoiceGen" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #0f172a;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; letter-spacing: -.01em; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: .82rem;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,.12); }
+
+    /* ── HERO ── */
+    .blog-hero {
+      background: #0f172a;
+      padding: 56px 24px 48px;
+      text-align: center;
+      color: #fff;
+    }
+    .blog-hero .label {
+      display: inline-block;
+      background: rgba(37,99,235,.2);
+      color: #93c5fd;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -.02em; }
+    .blog-hero p { color: rgba(255,255,255,.7); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+    /* ── LAYOUT ── */
+    .blog-layout {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+
+    /* ── FEATURED POSTS ── */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .post-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      display: block;
+      transition: border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .post-card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 20px rgba(37,99,235,.1);
+      transform: translateY(-2px);
+    }
+
+    .post-card .card-tag {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .post-card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .post-card p {
+      font-size: .825rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .post-card .card-meta {
+      font-size: .75rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .post-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      border-top: 3px solid #2563eb;
+    }
+
+    .post-card.featured h2 { font-size: 1.25rem; }
+    .post-card.featured p { font-size: .9rem; margin-bottom: 16px; }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    /* ── ALL ARTICLES LIST ── */
+    .articles-section { margin-top: 16px; }
+
+    .article-list { display: flex; flex-direction: column; gap: 0; }
+
+    .article-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid #f3f4f6;
+      text-decoration: none;
+    }
+    .article-item:last-child { border-bottom: none; }
+
+    .article-num {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      background: #f3f4f6;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 800;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .article-item.live .article-num {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .article-info { flex: 1; }
+
+    .article-info h3 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .article-item:not(.live) .article-info h3 { color: #374151; }
+
+    .article-info p {
+      font-size: .8rem;
+      color: #6b7280;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-badge {
+      flex-shrink: 0;
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+    .badge-live { background: #dcfce7; color: #166534; }
+    .badge-soon { background: #f3f4f6; color: #9ca3af; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .sidebar-card h3 {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-card ul li a {
+      font-size: .825rem;
+      color: #374151;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .sidebar-card ul li a:hover { color: #2563eb; }
+    .sidebar-card ul li a::before {
+      content: '→';
+      color: #2563eb;
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .sidebar-cta {
+      background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      color: #fff;
+      text-align: center;
+    }
+    .sidebar-cta h3 { color: #fff; }
+    .sidebar-cta p { font-size: .82rem; color: rgba(255,255,255,.7); margin-bottom: 14px; line-height: 1.5; }
+    .sidebar-cta a {
+      display: block;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: .875rem;
+      font-weight: 700;
+      transition: background .15s;
+    }
+    .sidebar-cta a:hover { background: #1d4ed8; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: #f3f4f6; color: #374151; font-size: .75rem; padding: 4px 10px; border-radius: 20px; text-decoration: none; }
+    .tag:hover { background: #eff6ff; color: #2563eb; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 32px 24px;
+    }
+    .footer-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-links a { color: #6b7280; font-size: .875rem; margin-right: 20px; text-decoration: none; display: inline-block; margin-bottom: 4px; }
+    .footer-links a:hover { color: #2563eb; }
+    .footer-copy { font-size: .8rem; color: #9ca3af; margin-top: 4px; }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .post-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .blog-hero h1 { font-size: 1.6rem; }
+    }
+    @media (max-width: 480px) {
+      .nav-links a { padding: 5px 7px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">InvoiceGen</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/blog.html" class="active">Blog</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="label">InvoiceGen Blog</div>
+  <h1>Invoicing Guides & Resources</h1>
+  <p>Practical advice for freelancers and small businesses on getting paid faster.</p>
+</div>
+
+<div class="blog-layout">
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- FEATURED POSTS -->
+    <p class="section-label">Featured Articles</p>
+    <div class="featured-grid">
+
+      <a href="/blog/how-to-invoice-as-a-freelancer.html" class="post-card featured">
+        <div>
+          <span class="card-tag">Freelancing</span>
+          <h2>How to Invoice as a Freelancer: The Complete 2026 Guide</h2>
+          <p>Everything a freelancer needs to know about creating professional invoices — what to include, how to number them, when to send them, and how to follow up on late payments.</p>
+          <div class="card-meta">
+            <span>March 2026</span>
+            <span>·</span>
+            <span>10 min read</span>
+          </div>
+          <span class="read-more" style="margin-top:14px;display:inline-flex">Read Article →</span>
+        </div>
+        <div style="background:#eff6ff;border-radius:10px;padding:24px;display:flex;align-items:center;justify-content:center">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="/blog/invoice-payment-terms-explained.html" class="post-card">
+        <span class="card-tag">Payment Terms</span>
+        <h2>Invoice Payment Terms Explained: Net 30, Net 15, Due on Receipt</h2>
+        <p>A clear breakdown of the most common invoice payment terms, when to use each one, and how your choice affects how quickly you get paid.</p>
+        <div class="card-meta"><span>March 2026</span><span>·</span><span>7 min read</span></div>
+        <span class="read-more" style="margin-top:12px;display:inline-flex">Read Article →</span>
+      </a>
+
+      <a href="/blog/gst-invoice-format-india.html" class="post-card">
+        <span class="card-tag">Tax & GST</span>
+        <h2>GST Invoice Format India: Complete Guide with Requirements</h2>
+        <p>What a valid GST tax invoice must contain under Indian law, the difference between a tax invoice and a bill of supply, and how to create one instantly.</p>
+        <div class="card-meta"><span>March 2026</span><span>·</span><span>8 min read</span></div>
+        <span class="read-more" style="margin-top:12px;display:inline-flex">Read Article →</span>
+      </a>
+
+    </div>
+
+    <!-- ALL 20 ARTICLES -->
+    <div class="articles-section">
+      <p class="section-label">All Articles (20)</p>
+      <div class="article-list">
+
+        <a href="/blog/how-to-invoice-as-a-freelancer.html" class="article-item live">
+          <div class="article-num">1</div>
+          <div class="article-info">
+            <h3>How to Invoice as a Freelancer: The Complete 2026 Guide</h3>
+            <p>Everything you need to create professional freelance invoices — structure, numbering, follow-up, and getting paid on time.</p>
+          </div>
+          <span class="article-badge badge-live">Live</span>
+        </a>
+
+        <a href="/blog/invoice-payment-terms-explained.html" class="article-item live">
+          <div class="article-num">2</div>
+          <div class="article-info">
+            <h3>Invoice Payment Terms Explained: Net 30, Net 15, Due on Receipt</h3>
+            <p>What each payment term means, how it affects your cash flow, and which to use for different types of clients and projects.</p>
+          </div>
+          <span class="article-badge badge-live">Live</span>
+        </a>
+
+        <a href="/blog/gst-invoice-format-india.html" class="article-item live">
+          <div class="article-num">3</div>
+          <div class="article-info">
+            <h3>GST Invoice Format India: Complete Guide with Requirements</h3>
+            <p>Mandatory fields for a GST-compliant tax invoice in India, CGST/SGST/IGST breakdown, and how to create one in minutes.</p>
+          </div>
+          <span class="article-badge badge-live">Live</span>
+        </a>
+
+        <div class="article-item">
+          <div class="article-num">4</div>
+          <div class="article-info">
+            <h3>What to Include on a Freelance Invoice (+ Free Checklist)</h3>
+            <p>A definitive checklist of every field a professional freelance invoice must contain, with examples and explanations for each element.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">5</div>
+          <div class="article-info">
+            <h3>How to Follow Up on an Unpaid Invoice (Email Templates Included)</h3>
+            <p>A step-by-step guide to chasing overdue payments professionally — from the first polite reminder to the final demand letter, with ready-to-use email templates.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">6</div>
+          <div class="article-info">
+            <h3>VAT Invoice Requirements: What Every UK &amp; EU Business Must Know</h3>
+            <p>The mandatory fields on a VAT invoice in the UK and EU, the difference between a full and simplified VAT invoice, and common compliance mistakes to avoid.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">7</div>
+          <div class="article-info">
+            <h3>Proforma Invoice vs Commercial Invoice: Key Differences Explained</h3>
+            <p>When to use a proforma invoice versus a commercial invoice, what each document is legally, and how to structure them correctly for international trade and domestic billing.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">8</div>
+          <div class="article-info">
+            <h3>How to Create a GST Invoice Online for Free (Step-by-Step)</h3>
+            <p>A practical walkthrough of creating a GST-compliant invoice using a free online tool, including which fields are mandatory and how to handle CGST, SGST, and IGST.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">9</div>
+          <div class="article-info">
+            <h3>Self-Employed Invoice Guide: Everything You Need to Know</h3>
+            <p>How to create invoices as a sole trader or self-employed professional — what information is legally required, how to handle tax, and how to get paid faster.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">10</div>
+          <div class="article-info">
+            <h3>Invoice Numbering: Best Practices and Common Formats</h3>
+            <p>Why invoice numbers matter, the most common numbering formats used by freelancers and businesses, and how to set up a system that keeps your records clean and auditable.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">11</div>
+          <div class="article-info">
+            <h3>What Is a Credit Note and When Should You Issue One?</h3>
+            <p>The definition of a credit note, when it is appropriate to issue one, how it differs from a refund, and what it must contain to be legally valid.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">12</div>
+          <div class="article-info">
+            <h3>Invoice vs Receipt: What's the Difference?</h3>
+            <p>A clear explanation of the distinction between an invoice and a receipt, why both documents matter, and when each should be issued in the billing process.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">13</div>
+          <div class="article-info">
+            <h3>How to Write an Invoice for Services Rendered</h3>
+            <p>A step-by-step guide specifically for service-based businesses — how to describe services clearly, handle hourly versus fixed-fee billing, and present totals professionally.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">14</div>
+          <div class="article-info">
+            <h3>Late Payment Laws: Know Your Rights When Clients Don't Pay</h3>
+            <p>An overview of late payment legislation in the UK, India, USA, and EU — what interest you can legally charge, how to escalate, and when to involve a collections agency.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">15</div>
+          <div class="article-info">
+            <h3>Best Free Invoice Generators in 2026: Compared &amp; Reviewed</h3>
+            <p>An honest comparison of the top free invoice generator tools in 2026 — features, limitations, privacy policies, and which type of user each tool is best suited for.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">16</div>
+          <div class="article-info">
+            <h3>How to Send a Professional Invoice via Email (+ Subject Line Templates)</h3>
+            <p>The right way to email an invoice — including how to write the subject line, the body text, what to attach, and how to follow up if the client does not respond.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">17</div>
+          <div class="article-info">
+            <h3>Freelance Invoice Checklist: 12 Things Every Invoice Must Have</h3>
+            <p>A no-nonsense checklist for freelancers to run through before sending any invoice — covering legal requirements, payment terms, and professional presentation standards.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">18</div>
+          <div class="article-info">
+            <h3>What Is a Purchase Order and How Does It Relate to an Invoice?</h3>
+            <p>The relationship between a purchase order and an invoice explained clearly — why large companies require POs before paying, and how freelancers should handle the PO-to-invoice workflow.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">19</div>
+          <div class="article-info">
+            <h3>How to Handle Disputed Invoices Professionally</h3>
+            <p>Practical strategies for resolving invoice disputes without damaging client relationships — from the initial conversation to written agreements and escalation paths.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">20</div>
+          <div class="article-info">
+            <h3>Recurring Invoice Setup: How to Bill Retainer Clients Monthly</h3>
+            <p>How to set up a consistent invoicing workflow for retainer clients, what to include on a recurring invoice, and how to handle months with variable deliverables or scope changes.</p>
+          </div>
+          <span class="article-badge badge-soon">Coming Soon</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card sidebar-cta">
+      <h3>Create a Free Invoice</h3>
+      <p>Professional PDF invoice in under 2 minutes. No signup. No watermark.</p>
+      <a href="/">Create Invoice Now →</a>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Popular Guides</h3>
+      <ul>
+        <li><a href="/how-to-create-invoice-online.html">How to Create an Invoice Online</a></li>
+        <li><a href="/free-invoice-template.html">Free Invoice Templates</a></li>
+        <li><a href="/invoice-format-guide.html">Invoice Format Guide</a></li>
+        <li><a href="/blog/how-to-invoice-as-a-freelancer.html">Freelancer Invoicing Guide</a></li>
+        <li><a href="/blog/invoice-payment-terms-explained.html">Payment Terms Explained</a></li>
+        <li><a href="/blog/gst-invoice-format-india.html">GST Invoice Format (India)</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Browse by Topic</h3>
+      <div class="tag-list">
+        <a href="#" class="tag">Freelancing</a>
+        <a href="#" class="tag">GST &amp; VAT</a>
+        <a href="#" class="tag">Payment Terms</a>
+        <a href="#" class="tag">Templates</a>
+        <a href="#" class="tag">Small Business</a>
+        <a href="#" class="tag">Invoice Format</a>
+        <a href="#" class="tag">Late Payments</a>
+        <a href="#" class="tag">Tax Invoices</a>
+        <a href="#" class="tag">PDF Invoice</a>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/about.html">About InvoiceGen</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div><!-- /.blog-layout -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Free Invoice Maker</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/about.html">About</a>
+      <a href="/how-to-create-invoice-online.html">How to Create an Invoice</a>
+      <a href="/free-invoice-template.html">Invoice Templates</a>
+      <a href="/invoice-format-guide.html">Invoice Format Guide</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 InvoiceGen &mdash; invoicegenerator.best. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
