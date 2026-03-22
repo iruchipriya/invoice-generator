@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.claude/
+
+Sitemap: https://invoicegenerator.best/sitemap.xml
