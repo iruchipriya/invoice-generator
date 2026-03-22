@@ -59,6 +59,41 @@ img { max-width: 100%; display: block; }
 .hidden { display: none !important; }
 .req { color: #ef4444; }
 
+/* ── Site Navigation Bar ─────────────────────────────── */
+.site-nav {
+  background: var(--clr-surface);
+  border-bottom: 1px solid var(--clr-border);
+  padding: 0 1.5rem;
+}
+
+.site-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-nav-inner::-webkit-scrollbar { display: none; }
+
+.site-nav-inner a {
+  display: inline-flex;
+  align-items: center;
+  padding: .55rem 1rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+}
+
+.site-nav-inner a:hover {
+  color: var(--clr-accent);
+  border-bottom-color: var(--clr-accent);
+}
+
 /* ── App Header ───────────────────────────────────────── */
 .app-header {
   position: sticky;
@@ -1152,15 +1187,17 @@ body.dark .preview-scroll { background: #0a0a0c; }
 body.ads-hidden .ad-toggle-btn { opacity: .5; }
 
 /* ── Ad Slot — Base ───────────────────────────────────── */
+/* Slots are invisible containers until AdSense fills them */
 .ad-slot {
   position: relative;
   text-align: center;
-  transition: opacity .25s, max-height .3s ease;
+  transition: opacity .25s;
+  /* No border, no background, no min-height — invisible when empty */
 }
 
-/* "Advertisement" label — required by AdSense policy */
+/* "Advertisement" label shown only once AdSense fills the slot */
 .ad-label {
-  display: block;
+  display: none; /* Hidden until AdSense activates */
   font-size: .62rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1170,33 +1207,36 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
   user-select: none;
 }
 
+/* Show label when the adjacent ins tag has a filled ad */
+.adsbygoogle[data-ad-status="filled"] ~ .ad-label,
+.ad-slot:has(.adsbygoogle[data-ad-status="filled"]) .ad-label {
+  display: block;
+}
+
 /* The ins tag (real AdSense) */
 .ad-ins { width: 100%; }
 
-/* Placeholder box shown before AdSense loads (dev/preview) */
-.ad-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .6rem;
-  border: 1px dashed var(--clr-border);
-  border-radius: var(--radius-sm);
-  background: var(--clr-bg);
+/* Post-download "Sponsored" label — always visible when panel is open */
+.pd-ad-label {
+  display: block;
+  font-size: .62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .1em;
   color: var(--clr-text-subtle);
-  font-size: .76rem;
-  font-weight: 400;
-  padding: .75rem 1rem;
-  min-height: 60px;
-  pointer-events: none;
+  margin: 0;
+  position: static;
+  user-select: none;
 }
-
-/* Hide placeholder once real AdSense is detected */
-.adsbygoogle[data-ad-status="filled"] ~ .ad-placeholder { display: none; }
 
 /* ── Slot-specific sizing & spacing ───────────────────── */
 
-/* A — Top Banner */
+/* A — Top Banner — only shows visible chrome when ad is filled */
 .ad-slot-top {
+  padding: 0;
+  background: transparent;
+}
+.ad-slot-top:has(.adsbygoogle[data-ad-status="filled"]) {
   padding: .5rem 2rem .4rem;
   background: var(--clr-surface);
   border-bottom: 1px solid var(--clr-border);
@@ -1208,7 +1248,7 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
   padding: .5rem 0;
 }
 
-.ad-slot-in-form .ad-placeholder { min-height: 90px; }
+/* no placeholder to style */
 
 /* C — Below Preview (inside right panel, below invoice window) */
 .ad-slot-below-preview {
@@ -1218,7 +1258,7 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
   flex-shrink: 0;
 }
 
-.ad-slot-below-preview .ad-placeholder { min-height: 70px; }
+/* no placeholder to style */
 
 /* D — Footer */
 .ad-slot-footer {
@@ -1695,6 +1735,7 @@ body.ads-hidden .ad-slot {
 /* ── Print: hide all ads ──────────────────────────────── */
 @media print {
   .app-header,
+  .site-nav,
   .form-panel,
   .preview-topbar,
   .ad-slot,
