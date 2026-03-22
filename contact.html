@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — InvoiceGen</title>
+  <meta name="description" content="Contact InvoiceGen for support, feedback, or questions about the free online invoice generator." />
+  <link rel="canonical" href="https://invoicegenerator.best/contact.html" />
+  <meta name="robots" content="index, follow" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    nav {
+      background: #0f172a;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: .875rem;
+      margin-left: 20px;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .breadcrumb {
+      font-size: .82rem;
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+    .breadcrumb a { color: #2563eb; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e3a5f;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: #6b7280;
+      margin-bottom: 48px;
+    }
+
+    /* CONTACT CARDS */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .contact-card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 16px rgba(37,99,235,.08);
+    }
+
+    .contact-card .icon {
+      width: 48px;
+      height: 48px;
+      background: #eff6ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .contact-card .icon svg { color: #2563eb; }
+
+    .contact-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: .875rem;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: .875rem;
+      font-weight: 600;
+      transition: background .15s;
+    }
+    .contact-card a:hover { background: #1d4ed8; }
+
+    /* FORM */
+    .form-section {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 36px 32px;
+      margin-bottom: 48px;
+    }
+
+    .form-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 6px;
+    }
+
+    .form-section .form-subtitle {
+      font-size: .875rem;
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: .9rem;
+      color: #111827;
+      font-family: inherit;
+      transition: border-color .15s;
+      background: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .submit-btn {
+      background: #1e3a5f;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s;
+    }
+    .submit-btn:hover { background: #2563eb; }
+
+    .form-note {
+      font-size: .8rem;
+      color: #9ca3af;
+      margin-top: 12px;
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-msg {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      color: #166534;
+      font-size: .9rem;
+      margin-top: 16px;
+    }
+
+    /* FAQ TEASER */
+    .faq-teaser {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .faq-teaser h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 16px;
+    }
+    .faq-teaser dl dt {
+      font-weight: 600;
+      color: #1e40af;
+      font-size: .9rem;
+      margin-bottom: 4px;
+      margin-top: 16px;
+    }
+    .faq-teaser dl dt:first-child { margin-top: 0; }
+    .faq-teaser dl dd {
+      color: #374151;
+      font-size: .875rem;
+      margin: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 32px 24px;
+    }
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-links a {
+      color: #6b7280;
+      font-size: .875rem;
+      margin-right: 20px;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .footer-links a:hover { color: #2563eb; }
+    .footer-copy { font-size: .8rem; color: #9ca3af; margin-top: 4px; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.55rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-section { padding: 24px 20px; }
+      .faq-teaser { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">InvoiceGen</a>
+    <div class="nav-links">
+      <a href="/">Free Invoice Maker</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; Contact</p>
+
+  <h1>Contact Us</h1>
+  <p class="subtitle">We'd love to hear from you — feedback, questions, or bug reports.</p>
+
+  <!-- CONTACT OPTIONS -->
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h3>Email Us</h3>
+      <p>For support, feedback, or partnership enquiries.</p>
+      <!-- REPLACE: update this email with your real contact email -->
+      <a href="mailto:hello@invoicegenerator.best">Send Email</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <h3>Report a Bug</h3>
+      <p>Found something broken? Let us know and we'll fix it fast.</p>
+      <!-- REPLACE: update this email or link to GitHub Issues -->
+      <a href="mailto:hello@invoicegenerator.best?subject=Bug%20Report">Report Bug</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <h3>Feature Request</h3>
+      <p>Have an idea to make InvoiceGen better? We're listening.</p>
+      <a href="mailto:hello@invoicegenerator.best?subject=Feature%20Request">Suggest Feature</a>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="form-section">
+    <h2>Send Us a Message</h2>
+    <p class="form-subtitle">Fill in the form below and we'll get back to you within 1–2 business days.</p>
+
+    <form id="contactForm" action="mailto:hello@invoicegenerator.best" method="post" enctype="text/plain" novalidate>
+      <!-- REPLACE: for a real contact form, replace this with a Formspree / Netlify Forms endpoint -->
+      <!-- Formspree example: <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"> -->
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">Your Name <span style="color:#e53e3e">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email Address <span style="color:#e53e3e">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="jane@example.com" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cf-subject">Subject <span style="color:#e53e3e">*</span></label>
+        <select id="cf-subject" name="subject" required>
+          <option value="">— Select a topic —</option>
+          <option value="Bug Report">Bug Report</option>
+          <option value="Feature Request">Feature Request</option>
+          <option value="General Feedback">General Feedback</option>
+          <option value="Business Enquiry">Business Enquiry</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cf-message">Message <span style="color:#e53e3e">*</span></label>
+        <textarea id="cf-message" name="message" placeholder="Describe your question or feedback in detail…" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+      <p class="form-note">We typically respond within 1–2 business days. By submitting this form you agree to our <a href="/privacy-policy.html">Privacy Policy</a>.</p>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Thank you for your message! We'll get back to you within 1–2 business days.
+    </div>
+  </div>
+
+  <!-- QUICK FAQ -->
+  <div class="faq-teaser">
+    <h2>Quick Answers</h2>
+    <dl>
+      <dt>Is InvoiceGen really free?</dt>
+      <dd>Yes — completely free. No subscription, no watermark, no account required. We're supported by ads.</dd>
+
+      <dt>Where is my invoice data stored?</dt>
+      <dd>Nowhere — everything stays in your browser. We never see your invoice content. See our <a href="/privacy-policy.html">Privacy Policy</a>.</dd>
+
+      <dt>Can I use this for GST invoices?</dt>
+      <dd>Yes. Add tax rows for CGST, SGST, IGST or any custom tax. The tool supports any percentage.</dd>
+
+      <dt>Why is my invoice showing wrong totals?</dt>
+      <dd>Make sure all line item quantities and rates are filled in correctly. If you find a bug, please report it using the form above.</dd>
+    </dl>
+  </div>
+
+</div><!-- /.container -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Free Invoice Maker</a>
+      <a href="/how-to-create-invoice-online.html">How to Create an Invoice</a>
+      <a href="/free-invoice-template.html">Invoice Templates</a>
+      <a href="/invoice-format-guide.html">Invoice Format Guide</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 InvoiceGen &mdash; invoicegenerator.best</p>
+  </div>
+</footer>
+
+<script>
+  // Simple client-side form handler
+  // For real form submissions, replace the form action with Formspree or Netlify Forms
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // If using mailto: action, let the browser handle it naturally
+    // If you switch to Formspree/Netlify, uncomment the block below:
+    /*
+    e.preventDefault();
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        this.reset();
+        document.getElementById('successMsg').style.display = 'block';
+      }
+    });
+    */
+  });
+</script>
+
+</body>
+</html>
