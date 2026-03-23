@@ -795,11 +795,24 @@ body.dark .preview-scroll { background: #0a0a0c; }
   color: #1c1c1e;
   margin: 1.25rem;
   border-radius: 8px;
-  padding: 2.5rem;
+  padding: 0;
   min-height: 500px;
   font-size: .88rem;
   line-height: 1.65;
   box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  border-top: 4px solid #1e3a5f;
+  overflow: hidden;
+}
+
+.invoice-doc > *:not(.inv-header-band) {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.inv-header-band {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  padding: 2rem 2.5rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* Invoice header band */
@@ -838,12 +851,16 @@ body.dark .preview-scroll { background: #0a0a0c; }
 .inv-meta { text-align: right; min-width: 185px; }
 
 .inv-title {
-  font-size: 1.9rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: .18em;
-  color: #1e3a5f;
+  letter-spacing: .2em;
+  color: #fff;
   line-height: 1;
   margin-bottom: .85rem;
+  background: #1e3a5f;
+  display: inline-block;
+  padding: .45rem .9rem .4rem;
+  border-radius: 4px;
 }
 
 .inv-meta-table { margin-left: auto; }
@@ -863,12 +880,18 @@ body.dark .preview-scroll { background: #0a0a0c; }
   margin: 1.5rem 0;
 }
 
+/* Header band resets — header lives inside the band now */
+.inv-header-band .inv-header {
+  margin-bottom: 0;
+}
+
 /* Bill To section */
 .inv-bill-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  padding-top: 1.5rem;
 }
 
 .inv-bill-label {
@@ -966,6 +989,9 @@ body.dark .preview-scroll { background: #0a0a0c; }
 }
 
 .text-muted-inv { color: #ccc; font-style: italic; }
+
+/* Bottom padding for invoice content */
+.invoice-doc > *:last-child { padding-bottom: 2rem; }
 
 /* Notes / Terms */
 .inv-footer {
@@ -1244,11 +1270,19 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
 
 /* B — In-Form (between cards in the left panel) */
 .ad-slot-in-form {
+  margin-bottom: 0;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s, margin .3s, padding .3s;
+}
+
+/* Only show when ad is filled */
+.ad-slot-in-form:has(.adsbygoogle[data-ad-status="filled"]) {
+  max-height: 400px;
   margin-bottom: 1rem;
   padding: .5rem 0;
 }
-
-/* no placeholder to style */
 
 /* C — Below Preview (inside right panel, below invoice window) */
 .ad-slot-below-preview {
@@ -1755,5 +1789,9 @@ body.ads-hidden .ad-slot {
   .preview-panel { display: block; width: 100%; height: auto; overflow: visible; }
   .preview-sticky { border: none; box-shadow: none; border-radius: 0; overflow: visible; height: auto; }
   .preview-scroll { background: #fff; overflow: visible; max-height: none; }
-  .invoice-doc { margin: 0; border-radius: 0; box-shadow: none; padding: 1.5rem; }
+  .invoice-doc { margin: 0; border-radius: 0; box-shadow: none; padding: 0; border-top: none; }
+  .invoice-doc > *:not(.inv-header-band) { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .inv-header-band { background: #fff; border-bottom: 1px solid #e8e8e8; padding: 1.5rem 1.5rem 1rem; }
+  .inv-title { background: #1e3a5f; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .inv-items-table thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

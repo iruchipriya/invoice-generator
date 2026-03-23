@@ -561,25 +561,25 @@ function buildPreviewHTML() {
 
   return `
     <!-- Invoice Header -->
-    <div class="inv-header">
-      <div class="inv-brand">
-        ${logoHTML}
-        <div class="inv-biz-name">${escapeHtml(bName) || '<span style="color:#a0aec0">Your Business</span>'}</div>
-        <div class="inv-biz-detail">${escapeHtml(bAddr)}</div>
-        ${contactLine ? `<div class="inv-biz-detail" style="margin-top:.25rem">${escapeHtml(contactLine)}</div>` : ''}
-        ${gstBadge}
-      </div>
-      <div class="inv-meta">
-        <div class="inv-title">INVOICE</div>
-        <table class="inv-meta-table">
-          <tr><td>Invoice #</td><td>${escapeHtml(invNo) || '—'}</td></tr>
-          <tr><td>Date</td><td>${formatDate(invDate)}</td></tr>
-          ${dueDate ? `<tr><td>Due Date</td><td>${formatDate(dueDate)}</td></tr>` : ''}
-        </table>
+    <div class="inv-header-band">
+      <div class="inv-header">
+        <div class="inv-brand">
+          ${logoHTML}
+          <div class="inv-biz-name">${escapeHtml(bName) || '<span style="color:#a0aec0">Your Business</span>'}</div>
+          <div class="inv-biz-detail">${escapeHtml(bAddr)}</div>
+          ${contactLine ? `<div class="inv-biz-detail" style="margin-top:.25rem">${escapeHtml(contactLine)}</div>` : ''}
+          ${gstBadge}
+        </div>
+        <div class="inv-meta">
+          <div class="inv-title">INVOICE</div>
+          <table class="inv-meta-table">
+            <tr><td>Invoice #</td><td>${escapeHtml(invNo) || '—'}</td></tr>
+            <tr><td>Date</td><td>${formatDate(invDate)}</td></tr>
+            ${dueDate ? `<tr><td>Due Date</td><td>${formatDate(dueDate)}</td></tr>` : ''}
+          </table>
+        </div>
       </div>
     </div>
-
-    <hr class="inv-divider" />
 
     <!-- Bill To -->
     <div class="inv-bill-section">

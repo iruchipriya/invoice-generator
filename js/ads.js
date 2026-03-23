@@ -88,6 +88,20 @@ function initAds() {
   setupPostDownloadClose();
   setupKeyboardShortcut();   // Ctrl+Shift+A → print stats
   trackPageView();
+  collapseEmptyInFormAd();
+}
+
+/** Collapse in-form ad slot if no ad loads after a timeout */
+function collapseEmptyInFormAd() {
+  const slot = document.getElementById('adSlotInForm');
+  if (!slot) return;
+  // Check after 3 seconds — if no ad filled, keep it collapsed
+  setTimeout(() => {
+    const ins = slot.querySelector('.adsbygoogle');
+    if (!ins || ins.getAttribute('data-ad-status') !== 'filled') {
+      slot.style.display = 'none';
+    }
+  }, 3000);
 }
 
 // ═══════════════════════════════════════════════════════════
