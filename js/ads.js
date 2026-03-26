@@ -91,16 +91,18 @@ function initAds() {
   collapseEmptyInFormAd();
 }
 
-/** Collapse in-form ad slot if no ad loads after a timeout */
+/** Mark ad slots as filled when AdSense loads, collapse empty ones */
 function collapseEmptyInFormAd() {
-  const slot = document.getElementById('adSlotInForm');
-  if (!slot) return;
-  // Check after 3 seconds — if no ad filled, keep it collapsed
+  // Check all ad slots after 3 seconds — if no ad filled, keep collapsed
   setTimeout(() => {
-    const ins = slot.querySelector('.adsbygoogle');
-    if (!ins || ins.getAttribute('data-ad-status') !== 'filled') {
-      slot.style.display = 'none';
-    }
+    document.querySelectorAll('.ad-slot').forEach(slot => {
+      const ins = slot.querySelector('.adsbygoogle');
+      if (ins && ins.getAttribute('data-ad-status') === 'filled') {
+        slot.classList.add('ad-filled');
+      } else {
+        slot.style.display = 'none';
+      }
+    });
   }, 3000);
 }
 

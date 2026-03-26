@@ -1279,8 +1279,21 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
 .ad-slot {
   position: relative;
   text-align: center;
-  transition: opacity .25s;
-  /* No border, no background, no min-height — invisible when empty */
+  transition: opacity .25s, max-height .3s, padding .3s;
+  overflow: hidden;
+  max-height: 0;
+  padding: 0 !important;
+}
+
+/* Only show when AdSense fills the slot */
+.ad-slot:has(.adsbygoogle[data-ad-status="filled"]) {
+  max-height: 400px;
+  overflow: visible;
+}
+
+.ad-slot.ad-filled {
+  max-height: 400px;
+  overflow: visible;
 }
 
 /* "Advertisement" label shown only once AdSense fills the slot */
@@ -1320,35 +1333,24 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
 /* ── Slot-specific sizing & spacing ───────────────────── */
 
 /* A — Top Banner — only shows visible chrome when ad is filled */
-.ad-slot-top {
-  padding: 0;
-  background: transparent;
-}
-.ad-slot-top:has(.adsbygoogle[data-ad-status="filled"]) {
-  padding: .5rem 2rem .4rem;
+.ad-slot-top:has(.adsbygoogle[data-ad-status="filled"]),
+.ad-slot-top.ad-filled {
+  padding: .5rem 2rem .4rem !important;
   background: var(--clr-surface);
   border-bottom: 1px solid var(--clr-border);
 }
 
 /* B — In-Form (between cards in the left panel) */
-.ad-slot-in-form {
-  margin-bottom: 0;
-  padding: 0;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height .3s, margin .3s, padding .3s;
-}
-
-/* Only show when ad is filled */
-.ad-slot-in-form:has(.adsbygoogle[data-ad-status="filled"]) {
-  max-height: 400px;
+.ad-slot-in-form:has(.adsbygoogle[data-ad-status="filled"]),
+.ad-slot-in-form.ad-filled {
   margin-bottom: 1rem;
-  padding: .5rem 0;
+  padding: .5rem 0 !important;
 }
 
 /* C — Below Preview (inside right panel, below invoice window) */
-.ad-slot-below-preview {
-  padding: .5rem .5rem .4rem;
+.ad-slot-below-preview:has(.adsbygoogle[data-ad-status="filled"]),
+.ad-slot-below-preview.ad-filled {
+  padding: .5rem .5rem .4rem !important;
   border-top: 1px solid var(--clr-border);
   background: var(--clr-surface);
   flex-shrink: 0;
@@ -1357,8 +1359,9 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
 /* no placeholder to style */
 
 /* D — Footer */
-.ad-slot-footer {
-  padding: .75rem 2rem .5rem;
+.ad-slot-footer:has(.adsbygoogle[data-ad-status="filled"]),
+.ad-slot-footer.ad-filled {
+  padding: .75rem 2rem .5rem !important;
 }
 
 /* ── Trust Strip ──────────────────────────────────────── */
