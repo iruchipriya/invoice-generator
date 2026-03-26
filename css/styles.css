@@ -382,22 +382,13 @@ body.dark .hero-section { background: linear-gradient(135deg, #0a0a0c 0%, #11182
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.75rem;
-  height: calc(100vh - var(--header-h) - var(--ad-top-h) - 140px);
-  overflow: hidden;
+  align-items: start;
 }
 
-/* Left panel scrolls */
+/* Left panel — flows naturally, no internal scroll */
 .form-panel {
-  overflow-y: auto;
-  height: 100%;
   padding-right: .3rem;
-  scrollbar-width: thin;
-  scrollbar-color: #d4d4d8 transparent;
 }
-
-.form-panel::-webkit-scrollbar { width: 4px; }
-.form-panel::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 99px; }
-body.dark .form-panel::-webkit-scrollbar-thumb { background: #3f3f46; }
 
 /* ── Cards ────────────────────────────────────────────── */
 .card {
@@ -732,7 +723,9 @@ body.dark .btn-primary:hover { background: #255079; border-color: #255079; }
 
 /* ── Preview Panel ────────────────────────────────────── */
 .preview-panel {
-  height: 100%;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -742,6 +735,7 @@ body.dark .btn-primary:hover { background: #255079; border-color: #255079; }
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: calc(100vh - 2rem);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -1206,14 +1200,11 @@ body.dark .preview-scroll { background: #0a0a0c; }
 @media (max-width: 1024px) {
   .app-main {
     grid-template-columns: 1fr;
-    height: auto;
-    overflow: visible;
     padding: 1.25rem;
   }
 
-  .form-panel { overflow-y: visible; height: auto; }
-  .preview-panel { height: auto; overflow: visible; }
-  .preview-sticky { height: auto; }
+  .preview-panel { position: static; max-height: none; overflow: visible; }
+  .preview-sticky { max-height: none; height: auto; }
   .preview-scroll { max-height: 680px; }
 }
 
@@ -1851,9 +1842,9 @@ body.ads-hidden .ad-slot {
     background-image: none !important;
   }
 
-  .app-main { display: block; padding: 0; margin: 0; max-width: none; height: auto; overflow: visible; }
-  .preview-panel { display: block; width: 100%; height: auto; overflow: visible; }
-  .preview-sticky { border: none; box-shadow: none; border-radius: 0; overflow: visible; height: auto; }
+  .app-main { display: block; padding: 0; margin: 0; max-width: none; }
+  .preview-panel { display: block; width: 100%; position: static; max-height: none; overflow: visible; }
+  .preview-sticky { border: none; box-shadow: none; border-radius: 0; overflow: visible; max-height: none; height: auto; }
   .preview-scroll { background: #fff; overflow: visible; max-height: none; }
   .invoice-doc { margin: 0; border-radius: 0; box-shadow: none; padding: 0; border-top: none; }
   .invoice-doc > *:not(.inv-header-band) { padding-left: 1.5rem; padding-right: 1.5rem; }
