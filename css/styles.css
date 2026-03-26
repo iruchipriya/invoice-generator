@@ -312,6 +312,68 @@ body.dark .currency-list li.selected { background: rgba(255,255,255,.05); }
 .icon-btn:hover { background: rgba(255,255,255,.16); }
 .theme-icon { width: 17px; height: 17px; color: rgba(255,255,255,.7); }
 
+/* ── Hero Section ─────────────────────────────────────── */
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  padding: 2rem 2rem 1.75rem;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hero-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: .6rem;
+  letter-spacing: -.02em;
+}
+
+.hero-subtext {
+  font-size: .88rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .3rem .7rem;
+  border-radius: 20px;
+  letter-spacing: .01em;
+}
+
+.hero-badge svg { opacity: .8; }
+
+body.dark .hero-section { background: linear-gradient(135deg, #0a0a0c 0%, #111827 100%); }
+
+@media (max-width: 768px) {
+  .hero-heading { font-size: 1.25rem; }
+  .hero-subtext { font-size: .82rem; }
+  .hero-section { padding: 1.5rem 1rem 1.25rem; }
+}
+
 /* ── Layout ───────────────────────────────────────────── */
 .app-main {
   max-width: 1440px;
@@ -320,7 +382,7 @@ body.dark .currency-list li.selected { background: rgba(255,255,255,.05); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.75rem;
-  height: calc(100vh - var(--header-h) - var(--ad-top-h));
+  height: calc(100vh - var(--header-h) - var(--ad-top-h) - 140px);
   overflow: hidden;
 }
 
@@ -1770,6 +1832,7 @@ body.ads-hidden .ad-slot {
 @media print {
   .app-header,
   .site-nav,
+  .hero-section,
   .form-panel,
   .preview-topbar,
   .ad-slot,
