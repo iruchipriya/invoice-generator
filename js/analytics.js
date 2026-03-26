@@ -37,7 +37,7 @@ const ANALYTICS_CFG = {
    *   Format: G-XXXXXXXXXX
    *   Leave as 'G-XXXXXXXXXX' to keep tracking disabled until ready.
    */
-  measurementId: 'G-XXXXXXXXXX',
+  measurementId: 'G-ZVSDLRC8WN',
 
   /**
    * Debug mode:
