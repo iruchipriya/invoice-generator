@@ -1567,6 +1567,84 @@ body.ads-hidden .ad-toggle-btn { opacity: .5; }
   margin: 0;
 }
 
+/* ── Comparison Table ── */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .875rem;
+  margin-top: 1rem;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--clr-border);
+}
+.comparison-table th {
+  background: var(--clr-surface);
+  font-weight: 700;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--clr-text-muted);
+}
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: var(--clr-heading);
+}
+.comparison-table td:nth-child(2) {
+  color: var(--clr-accent);
+  font-weight: 700;
+}
+.comparison-table tr:hover {
+  background: var(--clr-surface);
+}
+
+/* ── Currency Grid ── */
+.currency-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+}
+.currency-tag {
+  display: inline-block;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--clr-heading);
+  white-space: nowrap;
+}
+
+/* ── Testimonial Grid ── */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.testimonial-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+.testimonial-text {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--clr-text);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.testimonial-author {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+}
+
 /* ── About block ── */
 .seo-about {
   background: var(--clr-surface);

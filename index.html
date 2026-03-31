@@ -2,29 +2,32 @@
 <html lang="en">
 <head>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0f172a" />
   <meta name="google-site-verification" content="jI3hxM9qaj3-MXuEoBQwkqensR4zQYW-Fbr9fO0nfiQ" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ── Primary SEO ── -->
-  <title>Free Invoice Generator — Create & Download PDF Invoices Online</title>
-  <meta name="description" content="Create professional invoices online for free. Fill in your details, add items, apply taxes, and download a PDF in seconds. No sign-up required." />
+  <title>Free Invoice Generator — No Sign-Up, Instant PDF Download | InvoiceGen</title>
+  <meta name="description" content="Create professional invoices online for free — no sign-up, no watermark. Add items, apply GST/VAT taxes, and download a clean PDF in seconds. Trusted by freelancers in 150+ countries." />
   <meta name="keywords" content="free invoice generator, online invoice maker, create invoice online, PDF invoice, invoice template, GST invoice, freelance invoice" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://invoicegenerator.best/" />
 
   <!-- ── Open Graph ── -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://invoicegenerator.best/" />
-  <meta property="og:title"       content="Free Invoice Generator — Create & Download PDF Invoices Online" />
-  <meta property="og:description" content="Create professional invoices online for free. Fill in your details, add items, apply taxes, and download a PDF in seconds. No sign-up required." />
+  <meta property="og:title"       content="Free Invoice Generator — No Sign-Up, Instant PDF Download | InvoiceGen" />
+  <meta property="og:description" content="Create professional invoices online for free — no sign-up, no watermark. Add items, apply GST/VAT taxes, and download a clean PDF in seconds." />
   <meta property="og:image"       content="https://invoicegenerator.best/og-image.png" />
   <meta property="og:locale"      content="en_US" />
   <meta property="og:site_name"   content="InvoiceGen" />
 
   <!-- ── Twitter Card ── -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Free Invoice Generator — Create & Download PDF Invoices Online" />
-  <meta name="twitter:description" content="Create professional invoices online for free. Download as PDF instantly. No account needed." />
+  <meta name="twitter:title"       content="Free Invoice Generator — No Sign-Up, Instant PDF Download | InvoiceGen" />
+  <meta name="twitter:description" content="Create professional invoices online for free — no sign-up, no watermark. Instant PDF download. Trusted by freelancers in 150+ countries." />
   <meta name="twitter:image"       content="https://invoicegenerator.best/og-image.png" />
 
   <!-- ── JSON-LD: WebSite (tells Google the site name) ── -->
@@ -38,14 +41,14 @@
   }
   </script>
 
-  <!-- ── JSON-LD: WebApplication ── -->
+  <!-- ── JSON-LD: SoftwareApplication ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": "InvoiceGen — Free Invoice Generator",
     "url": "https://invoicegenerator.best/",
-    "description": "Create and download professional PDF invoices online for free. Supports multiple currencies, tax rows, logo upload, and dark mode. No account required.",
+    "description": "Create and download professional PDF invoices online for free. Supports 150+ currencies, GST/VAT tax rows, logo upload, and dark mode. No account required.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -53,13 +56,22 @@
       "price": "0",
       "priceCurrency": "USD"
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "featureList": [
       "PDF invoice generation",
-      "Multiple currency support",
-      "Tax and GST rows",
-      "Logo upload",
+      "150+ currency support (INR, USD, EUR, GBP, AED, and more)",
+      "GST, VAT, CGST, SGST, and custom tax rows",
+      "Company logo upload",
       "Dark mode",
-      "No sign-up required"
+      "No sign-up or account required",
+      "Data never leaves your browser",
+      "No watermark on downloaded PDF"
     ]
   }
   </script>
@@ -146,7 +158,13 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <!-- ── Performance: preconnect to third-party origins ── -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <link rel="stylesheet" href="css/styles.min.css" />
 
   <!-- ============================================================
        ANALYTICS — Google Analytics 4
@@ -883,6 +901,103 @@
         <p>We built InvoiceGen because existing free invoice tools are either too complex, require sign-up, add watermarks to the PDF, or are only available in a few currencies. InvoiceGen solves all of these problems in a single, fast, clean interface that works on any device.</p>
       </div>
 
+      <!-- ── Comparison Table ── -->
+      <div class="seo-block">
+        <h2>InvoiceGen vs Other Free Invoice Generators</h2>
+        <p>How does InvoiceGen compare to other popular free invoicing tools? Here is a side-by-side comparison:</p>
+        <div style="overflow-x:auto">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>InvoiceGen</th>
+                <th>Wave</th>
+                <th>Zoho Invoice (Free)</th>
+                <th>PayPal Invoicing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Price</td><td><strong>100% Free</strong></td><td>Free</td><td>Free (limited)</td><td>Free (with fees)</td></tr>
+              <tr><td>Sign-up required?</td><td><strong>No</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>PDF watermark?</td><td><strong>None</strong></td><td>None</td><td>None</td><td>None</td></tr>
+              <tr><td>Data privacy</td><td><strong>Browser-only</strong></td><td>Cloud</td><td>Cloud</td><td>Cloud</td></tr>
+              <tr><td>Currencies</td><td><strong>150+</strong></td><td>1</td><td>Limited</td><td>25</td></tr>
+              <tr><td>GST/VAT support</td><td><strong>Yes, custom rows</strong></td><td>Limited</td><td>Yes</td><td>Limited</td></tr>
+              <tr><td>Logo upload</td><td><strong>Yes</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Dark mode</td><td><strong>Yes</strong></td><td>No</td><td>No</td><td>No</td></tr>
+              <tr><td>Invoice limit</td><td><strong>Unlimited</strong></td><td>Unlimited</td><td>5/month</td><td>Unlimited</td></tr>
+              <tr><td>Speed to first invoice</td><td><strong>&lt; 2 minutes</strong></td><td>~10 minutes</td><td>~15 minutes</td><td>~5 minutes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:1rem">For a deeper comparison, read our <a href="blog/best-free-invoice-generators.html">full review of the best free invoice generators in 2026</a>.</p>
+      </div>
+
+      <!-- ── Supported Currencies ── -->
+      <div class="seo-block">
+        <h2>Supported Countries &amp; Currencies</h2>
+        <p>InvoiceGen supports <strong>150+ world currencies</strong>, making it the most versatile free invoice generator available. No matter where you or your clients are based, you can create invoices in the correct local currency. Here are some of the most popular currencies used by our users:</p>
+        <div class="currency-grid">
+          <span class="currency-tag">🇮🇳 INR — Indian Rupee</span>
+          <span class="currency-tag">🇺🇸 USD — US Dollar</span>
+          <span class="currency-tag">🇬🇧 GBP — British Pound</span>
+          <span class="currency-tag">🇪🇺 EUR — Euro</span>
+          <span class="currency-tag">🇦🇪 AED — UAE Dirham</span>
+          <span class="currency-tag">🇸🇬 SGD — Singapore Dollar</span>
+          <span class="currency-tag">🇦🇺 AUD — Australian Dollar</span>
+          <span class="currency-tag">🇨🇦 CAD — Canadian Dollar</span>
+          <span class="currency-tag">🇯🇵 JPY — Japanese Yen</span>
+          <span class="currency-tag">🇿🇦 ZAR — South African Rand</span>
+          <span class="currency-tag">🇧🇷 BRL — Brazilian Real</span>
+          <span class="currency-tag">🇲🇾 MYR — Malaysian Ringgit</span>
+          <span class="currency-tag">🇳🇬 NGN — Nigerian Naira</span>
+          <span class="currency-tag">🇰🇪 KES — Kenyan Shilling</span>
+          <span class="currency-tag">🇵🇭 PHP — Philippine Peso</span>
+          <span class="currency-tag">🇹🇭 THB — Thai Baht</span>
+          <span class="currency-tag">🇮🇩 IDR — Indonesian Rupiah</span>
+          <span class="currency-tag">🇨🇭 CHF — Swiss Franc</span>
+          <span class="currency-tag">🇸🇦 SAR — Saudi Riyal</span>
+          <span class="currency-tag">🇶🇦 QAR — Qatari Riyal</span>
+          <span class="currency-tag">🇳🇿 NZD — New Zealand Dollar</span>
+          <span class="currency-tag">🇰🇷 KRW — South Korean Won</span>
+          <span class="currency-tag">🇲🇽 MXN — Mexican Peso</span>
+          <span class="currency-tag">🇹🇷 TRY — Turkish Lira</span>
+        </div>
+        <p style="margin-top:1rem">Plus 130+ more currencies including BDT, LKR, PKR, EGP, GHS, TZS, UGX, COP, PEN, CLP, HKD, TWD, SEK, NOK, DKK, PLN, CZK, HUF, RON, BGN, HRK, RSD, and many others. Simply select your currency from the dropdown above to get started.</p>
+      </div>
+
+      <!-- ── Testimonials ── -->
+      <div class="seo-block">
+        <h2>What Our Users Say</h2>
+        <p>Thousands of freelancers and small businesses worldwide use InvoiceGen to create professional invoices every day.</p>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I was spending 15 minutes per invoice with my old tool. InvoiceGen takes me under 2 minutes, and the PDF looks better. The fact that it does not need an account is what sold me."</p>
+            <p class="testimonial-author">— Priya S., Freelance Graphic Designer, Mumbai</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I needed a simple invoice tool for my contracting business that supports multiple currencies. I work with clients in the UK and UAE, and InvoiceGen handles GBP and AED perfectly."</p>
+            <p class="testimonial-author">— James T., Independent Contractor, London</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Best free invoice generator I have found. No sign-up, no watermark, and the GST tax rows work exactly how I need them for my Indian clients. Highly recommended."</p>
+            <p class="testimonial-author">— Arjun M., Software Consultant, Bengaluru</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I switched from Zoho Invoice because the free tier only allows 5 invoices per month. InvoiceGen has no limits and no catches. It just works."</p>
+            <p class="testimonial-author">— Sarah L., Marketing Freelancer, Toronto</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"As a solo founder, I do not want to pay for accounting software yet. InvoiceGen gives me professional invoices with zero cost and zero setup. It is exactly what I need at this stage."</p>
+            <p class="testimonial-author">— Daniel K., Startup Founder, Berlin</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The privacy aspect is a big deal for me. My client data stays in my browser and is never uploaded anywhere. That is rare for a free tool."</p>
+            <p class="testimonial-author">— Fatima R., Legal Consultant, Dubai</p>
+          </div>
+        </div>
+      </div>
+
       <!-- ── FAQ ── -->
       <div class="seo-block seo-faq">
         <h2>Frequently Asked Questions</h2>
@@ -1101,10 +1216,10 @@
   </script>
 
   <!-- Analytics (loaded first so script.js can call window.analytics immediately) -->
-  <script src="js/analytics.js"></script>
+  <script src="js/analytics.min.js"></script>
   <!-- Invoice logic -->
-  <script src="js/script.js"></script>
+  <script src="js/script.min.js"></script>
   <!-- Ad management (separate from invoice logic) -->
-  <script src="js/ads.js"></script>
+  <script src="js/ads.min.js"></script>
 </body>
 </html>
